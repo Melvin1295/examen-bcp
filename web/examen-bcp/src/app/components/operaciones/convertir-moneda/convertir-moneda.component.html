@@ -1,0 +1,34 @@
+<p-card>
+  <h4>Conversión de monedas</h4>
+   <div class="p-grid content">
+      <div class="p-col-12 p-md-6">
+        <form name="formConvertir">
+          <div class="p-fluid">
+              <div class="p-field">
+                  <label for="username">Moneda origen:</label>
+                  <p-dropdown [options]="listaMonedas"  [(ngModel)]="convertir.monedaOrigenId" name="monedaOrigen" optionLabel="nombre" optionValue="id"></p-dropdown>
+              </div>
+              <div class="p-field">
+                  <label for="password">Moneda destino:</label>
+                  <p-dropdown [options]="listaMonedas" [(ngModel)]="convertir.monedaDestinoId" name="monedaDestino" optionLabel="nombre" optionValue="id"></p-dropdown>
+              </div>
+              <div class="p-field">
+                  <label for="password">Monto:</label>
+                  <p-inputNumber [(ngModel)]="convertir.monto" mode="decimal" [minFractionDigits]="2" name="monto"></p-inputNumber>
+              </div>
+              <br>
+              <p-button label="Convertir" (click)="convertirMonto()"></p-button>
+              <br>
+              <div class="p-field">
+                  <label for="password">Monto convertido:</label>
+                  <p-inputNumber name="montoConvertido" mode="decimal" [(ngModel)]="montoConvertido"></p-inputNumber>
+              </div>
+              <div class="p-field">
+                <label for="password">Resultado Completo:</label>
+                <textarea pInputTextarea [(ngModel)]="resultadoCompleto" name="fullResult"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</p-card>

@@ -1,0 +1,56 @@
+<p-card>
+  <h4>Cambiar tasa de cambio</h4>
+   <div class="p-grid content-c">
+      <div class="p-col-12 p-md-6">
+        <form name="formCambiar tasa">
+          <div class="p-fluid">
+            <p-table [value]="tiposDeCambio" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+                currentPageReportTemplate="Mostrando {first} de {last} a {totalRecords} registros" [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>#</th>
+                        <th>Moneda Origen</th>
+                        <th>Moneda Destino</th>
+                        <th>Tasa</th>
+                        <th>Opciones</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-tipo let-rowIndex="rowIndex">
+                    <tr>
+                        <td>{{ rowIndex + 1 }}</td>
+                        <td>{{tipo.monedaOrigen.nombre}}({{tipo.monedaOrigen.codigoiso}})</td>
+                        <td>{{tipo.monedaDestino.nombre}}({{tipo.monedaDestino.codigoiso}})</td>
+                        <td>{{tipo.tasaCambio}}</td>
+                        <td><button pButton pRipple icon="pi pi-pencil" (click)="mostrarVentanaEdicion(tipo)" class="p-button-rounded p-button-success p-mr-2" ></button></td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+  <p-dialog [(visible)]="display" [modal]="true" [breakpoints]="{'960px': '50vw', '640px': '100vw'}" [style]="{width: '30vw'}">
+    <ng-template pTemplate="header">
+        Cambiando la tasa de {{monedaOrigen}} a {{monedaDestino}}
+    </ng-template>
+    <form name="formTasa">
+      <div class="p-fluid">
+          <div class="p-field">
+              <label for="username">Ingrese nueva tasa*:</label><br>
+              <p-inputNumber name="tasaNueva" [minFractionDigits]="2"  [(ngModel)]="tasa.nuevaTasa"></p-inputNumber>
+          </div>
+        </div><br>
+        <div class="botones">
+          <p-button label="Cambiar Tasa" (click)="cambiarTasaCambio()"></p-button>
+          <button pButton pRipple type="button" label="Cancelar" (click)="cancelar()" class="p-button-danger"></button>
+        </div>
+      </form>
+</p-dialog>
+

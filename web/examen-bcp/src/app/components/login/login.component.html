@@ -1,0 +1,22 @@
+<div class="login-content">
+  <p-card>
+    <h4>Ingresar Modulo Monedas</h4>
+    <div class="p-grid">
+        <div class="p-col-12 p-d-flex p-ai-center p-jc-center">
+          <form name="formLogin">
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="username">Usuario:</label>
+                    <input pInputText id="username" name="username" [(ngModel)]="datos.username" type="text" />
+                </div>
+                <div class="p-field">
+                    <label for="password">Calve:</label>
+                    <input pInputText id="password" name="password" [(ngModel)]="datos.password" type="password" />
+                </div><br>
+                <p-button label="Ingresar" (click)="login()"></p-button>
+            </div>
+          </form>
+        </div>
+    </div>
+  </p-card>
+</div>
